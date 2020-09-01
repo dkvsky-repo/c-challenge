@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <p class="data"></p>
+
+    <!-- <script async src="app.js"></script> -->
+    <!-- <script async src="wes.js"></script> -->
+
+    <script>
+      function getVehicleIds() {
+        const ids = {
+          vid: [1649088226, 469262242, 1362076446, 1352739284],
+        };
+
+        let { vid } = ids;
+
+        // remove duplicates
+        vid = [...new Set(vid)];
+
+        return vid;
+      }
+
+      let mockDealerArray = [
+        {
+          dealerId: 328693204,
+          name: "Doug's Doozies",
+          vehicles: [
+            {
+              vehicleId: 1303967776,
+              year: 2016,
+              make: "Bentley",
+              model: "Mulsanne",
+            },
+            {
+              vehicleId: 1623896121,
+              year: 2012,
+              make: "Nissan",
+              model: "Altima",
+            },
+          ],
+        },
+      ];
+
+      function addDealer(dealersArray, response) {
+        dealersArray.push({
+          dealerId: response.dealerId,
+          name: "",
+          vehicles: [],
+        });
+        // addDealerName()
+      }
+
+      function addVehicle(dealersArray, response) {
+        dealersArray.vehicles.push({
+          vehicleId: response.vehicleId,
+          year: response.year,
+          make: response.make,
+          model: response.model,
+        });
+      }
+
+      function getVehicleDetails(vehicleId) {
+        // make api call per id
+        // return vehicle detail
+        const fakeVehicleData = [
+          {
+            vehicleId: 1352739284,
+            year: 2004,
+            make: "MINI",
+            model: "Cooper",
+            dealerId: 1368796853,
+          },
+          {
+            vehicleId: 469262242,
+            year: 2014,
+            make: "Ford",
+            model: "F150",
+            dealerId: 1368796853,
+          },
+          {
+            vehicleId: 1362076446,
+            year: 2016,
+            make: "Honda",
+            model: "Accord",
+            dealerId: 1368796853,
+          },
+          {
+            vehicleId: 1649088226,
+            year: 1979,
+            make: "Cheverolet",
+            model: "Corvette",
+            dealerId: 328693204,
+          },
+        ];
+        // fake implementation
+
+        let payload = {};
+        fakeVehicleData.forEach((vehicle) => {
+          if (vehicleId === vehicle.vehicleId) {
+            payload = vehicle;
+            return;
+          }
+        });
+        return payload;
+      }
+
+      // initialize dealers array
+      let dealers = [];
+      // let dealers = mockDealerArray;
+
+      // make api calls for each vehicle id in "vid"
+      function createAnswerObject() {
+        // get list of vehicle ids in dataset
+        const ids = getVehicleIds();
+        let dealerIndex = undefined;
+
+        ids.forEach((id) => {
+          console.log(`*********** vid: ${id} ***********`);
+
+          // get the vehicle details for each vehicle id
+          let vehicle = getVehicleDetails(id);
+
+          // if dealers array is empty add we automatically add
+          // the first "dealer" item
+          if (dealers.length === 0) {
+            console.log(
+              `adding dealer... vehicle id is ${id}... dealer id is ${vehicle.dealerId}`
+            );
+            addDealer(dealers, vehicle);
+            addVehicle(dealers[0], vehicle);
+            console.log(`dealer added:`, dealers);
+          } else {
+            console.log(`array not empty...`);
+
+            // Find if dealer exists in dealers array
+            dealerIndex = dealers.findIndex((dealer) => {
+              // if dealer doesn't exist in the array the index is -1
+              return dealer.dealerId === vehicle.dealerId;
+            });
+
+            // if dealer exists -> addVehicle
+            if (dealerIndex && dealerIndex !== -1) {
+              console.log(
+                `adding... dealer exists... dealer index: ${dealerIndex}, dealer id: ${vehicle.dealerId}, vehicle id: ${vehicle.vehicleId}`
+              );
+              addVehicle(dealers[dealerIndex], vehicle);
+            } else {
+              // if dealer doesn't exist -> addDealer and add Vehicle
+              console.log(
+                `array not empty... dealer DOES NOT exist... dealer id is ${vehicle.dealerId}, vehicle id is ${vehicle.vehicleId}`
+              );
+              addDealer(dealers, vehicle);
+              // index for newly added dealer will be equal to array length - 1
+              addVehicle(dealers[dealers.length - 1], vehicle);
+            }
+          }
+        });
+      }
+      createAnswerObject();
+    </script>
+  </body>
+</html>
