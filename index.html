@@ -143,9 +143,10 @@
               // if dealer doesn't exist in the array the index is -1
               return dealer.dealerId === vehicle.dealerId;
             });
+            console.log(`dealer index is: ${dealerIndex}`);
 
             // if dealer exists -> addVehicle
-            if (dealerIndex && dealerIndex !== -1) {
+            if (dealerIndex !== -1) {
               console.log(
                 `adding... dealer exists... dealer index: ${dealerIndex}, dealer id: ${vehicle.dealerId}, vehicle id: ${vehicle.vehicleId}`
               );
