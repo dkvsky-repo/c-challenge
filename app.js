@@ -1,35 +1,16 @@
-// const chalk = require("chalk");
-import fetch from "node-fetch";
+import * as apiService from "./src/services/apiService.js";
+import { ENDPOINT } from "./constants.js";
 
-// ENDPOINTS
-const endpoint = {
-  dataset: `http://api.coxauto-interview.com/api/datasetId`,
-  vehicles: (datasetId) =>
-    `http://api.coxauto-interview.com/api/${datasetId}/vehicles`,
-};
+(async function createAnswerObject() {
+  let {
+    datasetId,
+    vehicleIds,
+    vehicles,
+  } = await apiService.getAllVehiclesWithInfo();
 
-/**
- * Get Dataset Id.
- *
- * @param {string} url Dataset endpoint.
- * @returns {Promise} JSON object - dataset id.
- */
-const getDatasetId = async (url) => {
-  const response = await fetch(url);
-  return await response.json();
-};
+  let dealerIndex = undefined;
 
-/**
- * Get List of Vehicle Ids
- *
- * @param {string} url Dataset endpoint.
- * @returns {promise} JSON object with array of  vehicles ids.
- */
-const getVehicleIds = async (url = endpoint.dataset) => {
-  const data = await getDatasetId(url);
-  const { datasetId } = data;
-  const vehiclesIds = await fetch(endpoint.vehicles(datasetId));
-  return await vehiclesIds.json();
-};
-
-getVehicleIds();
+  vehicleIds.forEach((id) => {
+    console.log(`*********** vehicleId: ${id} ***********`);
+  });
+})();
