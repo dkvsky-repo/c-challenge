@@ -1,11 +1,10 @@
 import fetch from "node-fetch";
-import chalk from "chalk";
 import { ENDPOINT } from "../../constants.js";
 
 /**
  * Get Dataset Id.
  *
- * @returns {promise} Dataset id.
+ * @returns {string} Dataset id.
  */
 export async function getDatasetId() {
   const response = await fetch(ENDPOINT.datasetId);
@@ -64,6 +63,14 @@ export async function getDealerName(datasetId, dealerId) {
   return name;
 }
 
+/**
+ * Post Answer.
+ *
+ * @param {string} datasetId The dataset id.
+ * @param {array} answer The dealers array.
+ *
+ * @returns {void}
+ */
 export function postAnswer(datasetId, answer) {
   fetch(ENDPOINT.answer(datasetId, answer), {
     method: "POST",
@@ -74,10 +81,14 @@ export function postAnswer(datasetId, answer) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      console.log(chalk.green(`Done. Thank You! 😎`));
+      console.log(`-------------------------`);
+      for (const [key, value] of Object.entries(data)) {
+        console.log(`${key}: ${value}`);
+      }
+      console.log(`-------------------------`);
+      console.log(`Process finished!`, data.success === true ? `😎` : `😢`);
     })
     .catch((error) => {
-      console.log('Error processing "postAnswer()"');
+      console.log(error);
     });
 }
