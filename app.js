@@ -1,9 +1,11 @@
 import * as apiService from "./src/services/apiService.js";
 import { addDealer, addVehicle } from "./src/helpers/answerHelper.js";
+import ora from "ora";
 
 let dealers = [];
 let dealerIndex = undefined;
 (async function createAnswerObject() {
+  const spinner = ora("Processing... This will take a few seconds ⏱").start();
   let {
     datasetId,
     vehicleIds,
@@ -34,5 +36,6 @@ let dealerIndex = undefined;
   }
 
   const answerData = { dealers };
-  return apiService.postAnswer(datasetId, answerData);
+  apiService.postAnswer(datasetId, answerData);
+  spinner.stop();
 })();

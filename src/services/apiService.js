@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import chalk from "chalk";
 import { ENDPOINT } from "../../constants.js";
 
 /**
@@ -74,6 +75,7 @@ export function postAnswer(datasetId, answer) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+      console.log(chalk.green(`Done. Thank You! 😎`));
     })
     .catch((error) => {
       console.log('Error processing "postAnswer()"');
