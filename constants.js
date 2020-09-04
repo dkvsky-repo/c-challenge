@@ -5,6 +5,9 @@ const ENDPOINT = {
   vehicles: (datasetId) => `${BASE_URL}/${datasetId}/vehicles`,
   vehicleInfo: (datasetId, vehicleId) =>
     `${BASE_URL}/${datasetId}/vehicles/${vehicleId}`,
+  dealerInfo: (datasetId, dealerId) =>
+    `${BASE_URL}/${datasetId}/dealers/${dealerId}`,
+  answer: (datasetId) => `${BASE_URL}/${datasetId}/answer`,
 };
 
 export { BASE_URL, ENDPOINT };

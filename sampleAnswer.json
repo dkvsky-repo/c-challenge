@@ -1,0 +1,71 @@
+{
+  "dealers": [
+    {
+      "dealerId": 1601882194,
+      "name": "Doug's Doozies",
+      "vehicles": [
+        {
+          "vehicleId": 1961672573,
+          "year": 2016,
+          "make": "Bentley",
+          "model": "Mulsanne"
+        },
+        {
+          "vehicleId": 1867062336,
+          "year": 2012,
+          "make": "Nissan",
+          "model": "Altima"
+        },
+        {
+          "vehicleId": 35714046,
+          "year": 1979,
+          "make": "Cheverolet",
+          "model": "Corvette"
+        }
+      ]
+    },
+    {
+      "dealerId": 276354124,
+      "name": "House of Wheels",
+      "vehicles": [
+        {
+          "vehicleId": 177567770,
+          "year": 2009,
+          "make": "Ford",
+          "model": "F150"
+        },
+        {
+          "vehicleId": 1830887567,
+          "year": 2013,
+          "make": "Mitsubishi",
+          "model": "Gallant"
+        },
+        { "vehicleId": 228311998, "year": 2016, "make": "Kia", "model": "Soul" }
+      ]
+    },
+    {
+      "dealerId": 1716886755,
+      "name": "Bob's Cars",
+      "vehicles": [
+        {
+          "vehicleId": 594372843,
+          "year": 2004,
+          "make": "MINI",
+          "model": "Cooper"
+        },
+        {
+          "vehicleId": 1955247660,
+          "year": 2016,
+          "make": "Honda",
+          "model": "Accord"
+        },
+        {
+          "vehicleId": 1473543137,
+          "year": 2014,
+          "make": "Ford",
+          "model": "F150"
+        }
+      ]
+    }
+  ]
+}
