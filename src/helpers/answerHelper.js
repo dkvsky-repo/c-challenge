@@ -1,5 +1,5 @@
 /**
- * Create Answer Objects.
+ * Create Answer Object.
  *
  * Helper to build the answer object that will be posted
  * to the Answer endpoint.
@@ -7,6 +7,8 @@
  * @param {Array} vehicleIds List of vehicles Ids.
  * @param {Array} vehicles Array of objects containing all vehicles
  *   requested for a given dataset id.
+ *
+ * @returns {Object} The answer object.
  */
 export function createAnswerObject(vehicleIds, vehicles) {
   let dealers = [];
@@ -25,24 +27,24 @@ export function createAnswerObject(vehicleIds, vehicles) {
         (dealer) => dealer.dealerId === vehicle.dealerId
       );
 
-      // If dealer exists -> addVehicle
+      // If dealer exists -> only addVehicle
       if (dealerIndex !== -1) {
         addVehicle(dealers[dealerIndex], vehicle);
       } else {
+        // If DOES NOT exist -> add both dealer and vehicle.
         addDealer(dealers, vehicle);
         addVehicle(dealers[dealers.length - 1], vehicle);
       }
     }
   }
-
   return { dealers };
 }
 
 /**
- * Add Dealer to Answer Object
+ * Add Dealer to Answer Object.
  *
  * @param {Array} dealersArray Target array.
- * @param {Object} vehicle Object item being added.
+ * @param {Object} vehicle Object Dealer item being added.
  */
 export function addDealer(dealersArray, vehicle) {
   dealersArray.push({

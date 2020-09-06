@@ -39,7 +39,7 @@ They are located under:
 /src/services/apiService.test.js
 ```
 
-To run the tests:
+To run the tests enter this command from the root directory:
 
 ```
 npm test

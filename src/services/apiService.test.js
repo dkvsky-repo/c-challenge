@@ -20,7 +20,6 @@ describe("API mocks", () => {
     getVehicleInfoMock.mockResolvedValue(vehicleObject);
     const expectedVehicle = await apiService.getVehicleInfo();
     expect(expectedVehicle).toMatchObject(vehicleObject);
-
     expect(getVehicleInfoMock).toHaveBeenCalled();
   });
 });
