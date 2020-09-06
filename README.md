@@ -27,4 +27,22 @@ node app.js
 
 - Wait a few seconds and you will see the result.
 
-![Screenshot](screenshot.png)
+![Answer](screenshot.png)
+
+## Tests
+
+Jest tests have been added to verify some of the features.
+They are located under:
+
+```
+/src/helpers/answerHelper.test.js
+/src/services/apiService.test.js
+```
+
+To run the tests:
+
+```
+npm test
+```
+
+![Jest Tests](screenshot-jest.png)

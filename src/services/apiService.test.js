@@ -1,31 +1,26 @@
-// test("mock promise resolution", () => {
-//   const mock = jest.fn();
-//   mock.mockResolvedValue("bar");
-
-//   expect(mock("foo")).resolves.toBe("bar");
-//   expect(mock).toHaveBeenCalledWith("foo");
-// });
 import * as apiService from "./apiService";
 
-test("getDatasetId() should return datasetId object", async () => {
-  const getDatasetIdMock = jest.spyOn(apiService, "getDatasetId");
-  getDatasetIdMock.mockResolvedValue({ datasetId: "llsWSxdkwER" });
-  const datasetId = await apiService.getDatasetId();
-  expect(datasetId).toEqual({ datasetId: "llsWSxdkwER" });
+describe("API mocks", () => {
+  test("getDatasetId() should return datasetId object", async () => {
+    const getDatasetIdMock = jest.spyOn(apiService, "getDatasetId");
+    getDatasetIdMock.mockResolvedValue({ datasetId: "llsWSxdkwER" });
+    const datasetId = await apiService.getDatasetId();
+    expect(datasetId).toEqual({ datasetId: "llsWSxdkwER" });
+  });
+
+  test("getVehicleInfo() should return a vehicle object", async () => {
+    const getVehicleInfoMock = jest.spyOn(apiService, "getVehicleInfo");
+    const vehicleObject = {
+      vehicleId: 117385904,
+      year: 2014,
+      make: "Ford",
+      model: "F150",
+      dealerId: 1936803401,
+    };
+    getVehicleInfoMock.mockResolvedValue(vehicleObject);
+    const expectedVehicle = await apiService.getVehicleInfo();
+    expect(expectedVehicle).toMatchObject(vehicleObject);
+
+    expect(getVehicleInfoMock).toHaveBeenCalled();
+  });
 });
-
-/*
-test outcome of getAllV
-
-
-*/
-
-// test("Testing hello()", () => {
-//   const helloMock = jest.spyOn(apiService, "hello");
-
-//   helloMock.mockImplementation(() => "David");
-//   expect(apiService.hello()).toEqual("David");
-
-//   helloMock.mockRestore();
-//   expect(apiService.hello("David")).toBe("Well, hello David!");
-// });

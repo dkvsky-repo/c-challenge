@@ -60,9 +60,10 @@ export async function getDealerName(datasetId, dealerId) {
  * Calls API to retrieve information about each vehicle id.
  *
  * @returns {Object} Object containing:
- *   - {String} datasetId.
- *   - {Array} vehicleIds.
- *   - {Array} All vehicles with detailed info.
+ *   - {String} datasetId - The dataset id.
+ *   - {Array} vehicleIds - An array with all the vehicles ids.
+ *   - {Array} vehicles - An array of objects containing each vehicle with
+ *    its corresponding information.
  */
 export async function getAllVehiclesWithInfo() {
   let vehicles = [];
