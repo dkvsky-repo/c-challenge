@@ -1,10 +1,10 @@
 /**
  * Add Dealer to Answer Object
  *
- * @param {array} dealersArray Target array.
- * @param {object} vehicle Object item being added.
+ * @param {Array} dealersArray Target array.
+ * @param {Object} vehicle Object item being added.
  */
-function addDealer(dealersArray, vehicle) {
+export function addDealer(dealersArray, vehicle) {
   dealersArray.push({
     dealerId: vehicle.dealerId,
     name: vehicle.dealerName,
@@ -15,10 +15,10 @@ function addDealer(dealersArray, vehicle) {
 /**
  * Add Vehicle to Answer Object
  *
- * @param {array} dealersArray Target array.
- * @param {object} vehicle Object item being added to dealer.
+ * @param {Array} dealersArray Target array.
+ * @param {Object} vehicle Object item being added to dealer.
  */
-function addVehicle(dealersArray, vehicle) {
+export function addVehicle(dealersArray, vehicle) {
   dealersArray.vehicles.push({
     vehicleId: vehicle.vehicleId,
     year: vehicle.year,
@@ -26,5 +26,3 @@ function addVehicle(dealersArray, vehicle) {
     model: vehicle.model,
   });
 }
-
-export { addDealer, addVehicle };
